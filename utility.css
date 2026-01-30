@@ -1,0 +1,121 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    background-color: black;
+}
+
+.flexbox {
+    display: flex;
+}
+
+.justifycontent {
+    justify-content: center;
+}
+
+.ulelement {
+    color: white;
+    list-style: none;
+    /* margin: 0;
+    padding: 0; */
+    top: 10px;
+    gap: 35px;
+    margin: 20px;
+}
+
+/* .spotifylogo {
+    stroke: transparent;
+    fill: var(--encore-logo-fill-color);
+}
+
+.homelogo {
+    fill: var(--encore-icon-fill, currentColor);
+    height: var(--encore-icon-height, var(--encore-graphic-size-decorative-base));
+    width: var(--encore-icon-width, var(--encore-graphic-size-decorative-base)) --encore-icon-width is not defined;
+} */
+
+.invert {
+    filter: invert(1);
+}
+
+.Right {
+    border-radius: 8px;
+    color: white;
+    background-color: rgb(26 26 26);
+    width: 30%;
+    height: 100vh;
+    justify-content: space-between;
+    /* margin: 25px; */
+    margin: 10px;
+    padding: 10px;
+    /* display: flex;
+    flex-direction: column; */
+
+}
+
+.left {
+    border-radius: 8px;
+    color: white;
+    background-color: rgb(26 26 26);
+    width: 70%;
+    height: 100vh;
+    /* margin: 25px; */
+    margin: 10px;
+    padding: 10px;
+}
+
+.sidebarfooter {
+    display: inline-table;
+    font-size: small;
+    color: gray;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    position: absolute;
+    bottom: 0;
+}
+
+.sidebarfooter a {
+    font-size: small;
+    color: gray;
+    gap: 15px;
+}
+
+.cardContainer {
+    display: flex;
+    margin: 30px 1px 0px 9px;
+    /* display: block; */
+    /* flex-direction: column; */
+    gap: 22px;
+}
+
+.cards {
+    position: relative;
+    background-color: rgb(46 46 46);
+    border-radius: 10px;
+    width: 170px;
+    /* border: 2px solid white; */
+}
+
+.cards img {
+    width: 94%;
+    object-fit: contain;
+}
+
+.cards>* {
+    padding-top: 5px;
+    padding: 10px;
+}
+
+.playicon {
+    right: 5px;
+    top: 119px;
+    position: absolute;
+    border: 1px solid green;
+    border-radius: 50px;
+    background-color: green;
+    opacity: 0;
+    transition: all 1s ease-out;
+}

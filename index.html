@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="utility.css">
+<!-- <script src="script.js"></script> -->
+
+<style>
+    .HomeButton {
+        border: 1 px solid black;
+        background-color: rgb(194 194 194);
+        border-radius: 36px;
+        height: 40px;
+        width: 10x;
+        margin-left: 70px;
+        padding: 10px;
+    }
+
+    .searchbar {
+        color: white;
+        background-color: rgb(46 46 46);
+        margin-left: 45px;
+        top: 9px;
+        position: relative;
+        height: 45px;
+        width: 430px;
+        border-radius: 23px;
+        border: 1px solid black;
+        align-items: center;
+    }
+
+    .searchLogo {
+        position: absolute;
+        right: 384px;
+        height: 33px;
+        margin-left: 160px;
+        top: 54%;
+        transform: translateY(-50%);
+
+    }
+
+    .logo {
+        padding: 10px;
+        height: 46px;
+        /* background-color:white;  */
+    }
+
+    .mainNavbar {
+        background-color: black;
+    }
+
+    .lilogin {
+        /* border: 1px solid white; */
+        border: 1px solid white;
+        padding: 4px;
+        border-radius: 15px;
+        height: 20px;
+        width: 45px;
+        color: black;
+        background-color: white;
+    }
+
+    .addlogo {
+        height: 30px;
+    }
+
+    .sidebarlinks {
+        display: grid;
+        flex-wrap: wrap;
+        gap: 15px;
+
+    }
+
+    .cards {
+        position: relative;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .cards:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+        cursor: pointer;
+    }
+
+    /* Tooltip */
+    .play-tooltip {
+        position: fixed;
+        background-color: black;
+        color: white;
+        font-size: 12px;
+        padding: 4px 8px;
+        border-radius: 6px;
+        pointer-events: none;
+        opacity: 0;
+        z-index: 9999;
+        transition: opacity 0.15s ease;
+    }
+
+    /* .username {
+        color: #1db954;
+        font-weight: bold;
+        cursor: default;
+    } */
+    #auth-area li,
+    .ulelement li {
+        cursor: pointer;
+        padding: 6px 12px;
+        border-radius: 12px;
+        transition: background-color 0.2s ease, opacity 0.2s ease;
+    }
+
+    #auth-area li:hover,
+    .ulelement li:hover {
+        background-color: rgba(255, 255, 255, 0.15);
+        opacity: 0.85;
+    }
+
+    .username {
+        color: #1db954;
+        font-weight: bold;
+        cursor: default;
+    }
+
+    .username:hover {
+        background-color: transparent;
+        opacity: 1;
+    }
+
+    /* Player bar css */
+    .player-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 90px;
+        background: #000;
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        color: white;
+        z-index: 1000;
+    }
+
+    .player-left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .player-left img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+    }
+
+    .player-center {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .controls button {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 20px;
+        margin: 0 10px;
+        cursor: pointer;
+    }
+
+    .controls button:hover {
+        color: #1db954;
+    }
+
+    .progress {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        max-width: 500px;
+        gap: 10px;
+        font-size: 12px;
+    }
+
+    #progressBar {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: 4px;
+        background: white;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    #progressBar::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 12px;
+        height: 12px;
+        background: white;
+        border-radius: 50%;
+    }
+
+    #progressBar::-moz-range-thumb {
+        width: 12px;
+        height: 12px;
+        background: white;
+        border-radius: 50%;
+        border: none;
+    }
+
+    #progressBar::-moz-range-track {
+        background: white;
+        height: 4px;
+    }
+
+
+
+    /* ends */
+
+
+    /* library css */
+    .library-section {
+        padding: 16px;
+    }
+
+    /* Flex ONLY for header */
+    .library-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Playlist list BELOW header */
+    #playlist-list {
+        margin-top: 12px;
+        padding-left: 0;
+    }
+
+    /* Playlist items */
+    /* 🔒 FORCE PLAYLISTS BELOW LIBRARY HEADER */
+    /* .library-section {
+        display: block !important;
+    }
+
+    #playlist-list {
+        display: block !important;
+        width: 100%;
+        margin-top: 12px;
+        padding-left: 0;
+    }
+
+    #playlist-list li {
+        display: block !important;
+        width: 100%;
+        list-style: none;
+        padding: 6px 0;
+        color: white;
+        cursor: pointer;
+    } */
+
+    /* ends */
+</style>
+
+<body>
+    <header class="mainNavbar">
+        <div class="navbar flexbox">
+            <img class=" logo invert" src="logo.svg" alt="">
+            <img class="HomeButton invert" src="HomeButton.svg" alt="">
+            <div class="searchbar flexbox justifycontent">
+                What Do You Wan't To Hear?
+                <img class="searchLogo invert" src="searchLogo.svg" alt="">
+                <!-- What Do You Wan't To Hear? -->
+            </div>
+            <ul class="flexbox ulelement">
+                <li>Premium</li>
+                <li>Support</li>
+                <li>Download</li>
+            </ul>
+            <hr>
+            <ul class="flexbox ulelement" id="auth-area">
+                <li>Install App</li>
+                <!-- <li>Sign-Up</li> -->
+                <li id="logout">Logout</li>
+                <li class="lilogin">Log In</li>
+                <li id="guest-btn" class="nav-btn">Continue as Guest</li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <div class="container flexbox">
+            <div class="Right flexbox">
+                <h2>Your Library</h2>
+                <img class="addlogo invert" src="add.svg" alt="">
+
+                <ul id="playlist-list"></ul>
+
+                <div class="sidebarfooter" data-testid="left-sidebar-footer">
+                    <div class="sidebarlinks" data-testid="left-sidebar-legal-links">
+                        <a href="https://www.spotify.com/legal">
+                            <span>Legal</span>
+                        </a>
+                        <a href="https://www.spotify.com/safety-privacy">
+                            <span>Safety & Privacy Center</span>
+                        </a>
+                        <a href="https://www.spotify.com/privacy-policy">
+                            <span>Privacy Policy</span>
+                        </a>
+                        <a href="https://www.spotify.com/cookies">
+                            <span>Cookies</span>
+                        </a>
+                        <a href="https://www.spotify.com/about-ads">
+                            <span>About Ads</span>
+                        </a>
+                        <a href="https://www.spotify.com/accessibility">
+                            <span>Accessibility</span>
+                        </a>
+                        <a draggable="false" href="https://www.spotify.com/cookies-settings" target="_blank"
+                            rel="noopener">
+                            <span>Cookies</span>
+                        </a>
+                    </div>
+                    <!-- The button and SVG content were previously removed, now the wrapping div for 'English' is also removed -->
+                    <!-- <span>English</span> -->
+                </div>
+            </div>
+
+            
+
+            <div class="left ">
+                <h2>Trending Song's</h2>
+
+                <div class="cardContainer flexbox ">
+                    <div class="cards" data-title="Saiyaara Dhun">
+                        <svg class="playicon" width="24" height="24" viewBox="0 0 24 24" fill="black"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 5V19L19 12L8 5Z" />
+                        </svg>
+                        <img src="https://i.scdn.co/image/ab67616d00001e02a7e251b543c77a6ed356dfbe" alt="">
+                        <h3 class="">Saiyaara (From "Saiyaara")</h3>
+                        <p>Saiyaara is a 2025 Indian Hindi-language musical</p>
+                    </div>
+                    <div class="cards" data-title="Saiyaar Peaceful">
+                        <img src="https://www.acmodasi.in/amdb/images/movie/w200/m/5/NyAtmaCb44oeS2Kf.webp" alt="">
+                        <h3 class="">Saiyaara Peaceful BGM
+                            Arijit Singh</h3>
+                        <p>Saiyaara is a 2025 Indian Hindi-language musical</p>
+                    </div>
+                    <div class="cards" data-title="Heeriye">
+                        <img src="https://c.saavncdn.com/022/Heeriye-feat-Arijit-Singh-Hindi-2023-20230928050405-500x500.jpg"
+                            alt="">
+                        <h3 class="">Heeriye</h3>
+                        <p>Jasleen Royal Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus dolores
+                            cumque molestias distinctio sed, incidunt rerum atque sit numquam ab quis reprehenderit vero
+                            deserunt inventore.</p>
+                    </div>
+                    <div class="cards" data-title="Heeriye">
+                        <img src="https://c.saavncdn.com/022/Heeriye-feat-Arijit-Singh-Hindi-2023-20230928050405-500x500.jpg"
+                            alt="">
+                        <h3 class="">Heeriye</h3>
+                        <p>Jasleen Royal Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus dolores
+                            cumque molestias distinctio sed, incidunt rerum atque sit numquam ab quis reprehenderit vero
+                            deserunt inventore.</p>
+                    </div>
+
+                </div>
+            </div>
+    </main>
+    <script src="songs.js"></script>
+
+    <script src="script.js"></script>
+
+
+    <div class="player-bar">
+        <div class="player-left">
+            <img id="player-cover" src="" alt="cover">
+            <div>
+                <div id="player-title">Not Playing</div>
+                <div id="player-artist"></div>
+            </div>
+        </div>
+
+        <div class="player-center">
+            <div class="controls">
+                <button id="prevBtn">⏮</button>
+                <button id="playPauseBtn">▶</button>
+                <button id="nextBtn">⏭</button>
+            </div>
+
+            <div class="progress">
+                <span id="currentTime">0:00</span>
+                <input type="range" id="progressBar" value="0">
+                <span id="duration">0:00</span>
+            </div>
+        </div>
+    </div>
+
+    <audio id="audioPlayer"></audio>
+
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="signup.css">
+</head>
+
+<body>
+    <div class="top-bar">
+        <img src="logo.svg" class="logo-btn" alt="Logo">
+        <img src="HomeButton.svg" class="home-btn" alt="Home">
+    </div>
+
+
+    <div class="signup-container">
+        <h1>Create Account</h1>
+
+        <form id="signupForm">
+            <input type="text" id="name" placeholder="Full Name" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+
+            <button type="submit">Sign Up</button>
+            <button type="button" id="guestBtn" class="guest-btn">
+                Continue as Guest
+            </button>
+
+        </form>
+
+        <p class="login-text">
+            Already have an account?
+            <span onclick="window.location.href='login.html'">Log in</span>
+        </p>
+    </div>
+
+    <script src="signup.js"></script>
+</body>
+
+</html>
