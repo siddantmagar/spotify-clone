@@ -27,5 +27,4 @@ const songsDB = [
         cover: "https://c.saavncdn.com/022/Heeriye-feat-Arijit-Singh-Hindi-2023-20230928050405-500x500.jpg",
         src: "Songs/Heeriye.mp3"
     }
-    
-];  
+];

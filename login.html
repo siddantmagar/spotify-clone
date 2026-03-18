@@ -1,38 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <link rel="stylesheet" href="login.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Log In · Musicify</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --green: #1db954;
+      --green-h: #1ed760;
+      --base: #121212;
+      --card: #181818;
+      --elevated: #282828;
+      --white: #ffffff;
+      --text: #b3b3b3;
+      --border: rgba(255,255,255,0.1);
+      font-family: 'Inter', Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--base);
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Top bar: logo left, home right */
+    .top-bar {
+      width: 100%;
+      max-width: 100%;
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .brand-logo svg { width: 28px; height: 28px; fill: var(--white); }
+    .brand-logo span { font-size: 20px; font-weight: 700; color: var(--white); }
+
+    .home-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      background: none;
+      border: none;
+      transition: color 0.15s;
+    }
+    .home-link:hover { color: var(--white); }
+    .home-link svg { width: 20px; height: 20px; fill: currentColor; }
+
+    /* Card */
+    .login-card {
+      background: var(--card);
+      border-radius: 8px;
+      padding: 40px 48px;
+      width: 100%;
+      max-width: 420px;
+      margin: 48px auto;
+      text-align: center;
+    }
+
+    .login-card h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 32px;
+      letter-spacing: -0.3px;
+    }
+
+    .field { text-align: left; margin-bottom: 16px; }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--white);
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--elevated);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--white);
+      font-size: 14px;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    input:focus { border-color: var(--white); }
+    input::placeholder { color: var(--text); }
+
+    .error-msg {
+      font-size: 13px;
+      color: #ff4d4d;
+      text-align: center;
+      min-height: 20px;
+      margin-bottom: 8px;
+    }
+
+    .btn-login {
+      width: 100%;
+      padding: 14px;
+      background: var(--green);
+      border: none;
+      border-radius: 500px;
+      color: var(--base);
+      font-size: 15px;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background 0.15s, transform 0.1s;
+    }
+    .btn-login:hover { background: var(--green-h); transform: scale(1.02); }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 24px 0;
+      color: var(--text);
+      font-size: 13px;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .signup-link {
+      font-size: 14px;
+      color: var(--text);
+    }
+    .signup-link a, .signup-link span {
+      color: var(--white);
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    .signup-link a:hover, .signup-link span:hover { color: var(--green); }
+  </style>
 </head>
-
 <body>
-    <div class="top-bar">
-        <img src="logo.svg" class="logo-btn" alt="Logo">
-        <img src="HomeButton.svg" class="home-btn" alt="Home">
+
+  <div class="top-bar">
+    <div class="brand-logo" onclick="window.location.href='index.html'" role="link" tabindex="0">
+      <svg viewBox="0 0 24 24">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.65 14.4c-.2.32-.62.42-.95.22-2.6-1.59-5.87-1.95-9.72-1.07-.37.09-.74-.14-.83-.51-.09-.37.14-.74.51-.83 4.22-.96 7.84-.55 10.77 1.24.33.2.43.62.22.95zm1.24-2.77c-.25.4-.77.52-1.17.28-2.98-1.83-7.52-2.36-11.04-1.29-.46.14-.94-.12-1.08-.57-.14-.46.12-.94.57-1.08 4.02-1.22 9.01-.63 12.44 1.5.4.25.52.77.28 1.16zm.11-2.88C14.28 8.8 8.57 8.6 5.29 9.58c-.55.17-1.13-.14-1.3-.69-.17-.55.14-1.13.69-1.3 3.79-1.15 10.09-.93 14.08 1.58.49.3.64.94.35 1.42-.29.49-.94.65-1.41.36z"/>
+      </svg>
+      <span>Musicify</span>
     </div>
+    <button class="home-link" onclick="window.location.href='index.html'">
+      <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+      Home
+    </button>
+  </div>
 
-    <div class="login-container">
-        <h1>Log in to Music</h1>
+  <div class="login-card">
+    <h1>Log in to Musicify</h1>
 
-        <form id="loginForm">
-            <input type="email" id="email" placeholder="Email" required>
-            <input type="password" id="password" placeholder="Password" required>
+    <form id="loginForm" novalidate>
+      <div class="field">
+        <label for="email">Email address</label>
+        <input type="email" id="email" placeholder="Email address" autocomplete="email" required />
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Password" autocomplete="current-password" required />
+      </div>
 
-            <button type="submit">Log In</button>
-        </form>
+      <div class="error-msg" id="error-msg" role="alert" aria-live="polite"></div>
 
-        <!-- <p class="signup-text">
-        Don’t have an account? <span id="signup">Sign up</span>
-    </p> -->
-        <p class="signup-text">
-            Don’t have an account? <span onclick="window.location.href='signup.html'">Sign up</span>
-        </p>
+      <button type="submit" class="btn-login">Log In</button>
+    </form>
 
-    </div>
+    <div class="divider">or</div>
 
-    <script src="login.js"></script>
+    <p class="signup-link">
+      Don't have an account?
+      <span onclick="window.location.href='signup.html'">Sign up for free</span>
+    </p>
+  </div>
+
+  <script src="auth.js"></script>
+  <script>
+    /* Override alert() BEFORE login.js loads so any alert() call
+       shows inline rather than a popup. login.js uses DOM directly,
+       but this is a safety net for any other code path. */
+    window.alert = function(msg) {
+      var el = document.getElementById("error-msg");
+      if (el) { el.textContent = msg; el.style.display = "block"; }
+    };
+  </script>
+  <script src="login.js"></script>
 </body>
-
 </html>
